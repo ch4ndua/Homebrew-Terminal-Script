@@ -1,0 +1,22 @@
+#!/bin/bash
+# Prints commands to Terminal
+set -x #echo on
+# Disables Homebrew's analytics
+# To understand what analytics data is sent, read: https://docs.brew.sh/Analytics#why. Comment out or delete above command if okay with sending analytics data.
+brew analytics off
+# Checks pending updates to Homebrew package manager
+brew update
+# Updates any installed programs
+brew upgrade
+# Updates casks (GUI apps) that detect updates and update themselves
+brew upgrade --greedy
+# Clears cache, including for downloads for latest versions
+brew cleanup -s
+# Clears downloads for installed formulae or casks
+rm -rf "$(brew --cache)"
+# Shows missing dependencies
+brew missing
+# Uninstalls formulae that were only installed as a dependency of another formula and aren't needed anymore
+brew autoremove
+# Confirms there are no Homebrew configuration issues
+brew doctor
